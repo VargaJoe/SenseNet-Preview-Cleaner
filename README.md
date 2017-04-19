@@ -2,14 +2,14 @@
 
 ## How it works
 
-Preview cleaner tool for Sense/Net ECM. It is used to remove generated previews from the Content Repository (e.g. previews take up too much space or want to regenerate neccessary previews only). 
+Preview cleaner tool for Sense/Net ECM. It is used to remove generated previews from the Content Repository (e.g. previews take up too much space or want to regenerate neccessary previews only). As preview images don't use lucene index, the tool can be used on running site and because of it connects to the database directly it's neither bothered if the site is stopped. As long as Sense/Net has the below specified stored procedure the tool will work quite safely.
 
 ## Execution workflow
 
 This is what the tool does, when you execute it:
 
 1. loads the top 100 contents with 'PreviewImage' type from the database
-2. iterate the contents and remove them from the db one by one using the product own stored procedure: `proc_Node_DeletePhysical`
+2. iterate the contents and remove them from the db one by one using the product's own stored procedure: `proc_Node_DeletePhysical`
 3. sleep a certain time before continue
 4. starts from the beginning
 
